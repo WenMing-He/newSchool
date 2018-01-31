@@ -43,6 +43,7 @@ public class StudentController {
             Method m = student.getClass().getMethod("set"+newName,Class.forName(type.getTypeName()));
             if (type.getTypeName().equals("java.lang.String"))
             {
+				sreach = new String(sreach.getBytes("iso8859-1"),"UTF-8");
                 // 调用setter方法获取属性值
                 m.invoke(student,sreach);
             }
