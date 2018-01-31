@@ -1,0 +1,75 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.2.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-3.2.xsd ">
+
+    <!-- 1.使用spring组件扫描 -->
+    <context:component-scan base-package="cc.whe.school.controller" />
+
+    <!-- 2.通过annotation-driven可以替代下边的处理器映射器和适配器 -->
+    <!-- 如果使用了<mvc:annotation-driven />，它会自动注册DefaultAnnotationHandlerMapping
+    与AnnotationMethodHandlerAdapter这两个bean,所以就没有机会再给它注入interceptors属性，就无法指定拦截器。 -->
+    <mvc:annotation-driven />
+    <mvc:default-servlet-handler/>          <!-- 将无法mapping到Controller的path交给default servlet handler处理 -->
+
+    <!--*注解处理器映射器（注释掉，mvc:annotation-driven已默认配置好） -->
+    <!--<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">-->
+    <!--</bean>-->
+    <!--&lt;!&ndash; *注解适配器 &ndash;&gt;-->
+    <!--<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">-->
+        <!--&lt;!&ndash; 在webBindingInitializer中注入自定义属性编辑器、自定义转换器 &ndash;&gt;-->
+        <!--<property name="webBindingInitializer">-->
+            <!--<bean class="org.springframework.web.bind.support.ConfigurableWebBindingInitializer">-->
+                <!--<property name="conversionService" ref="conversionService" />-->
+                <!--<property name="validator" ref="validator" />-->
+            <!--</bean>-->
+        <!--</property>-->
+    <!--</bean>-->
+    <!--<bean id="conversionService" class="org.springframework.samples.petclinic.util.PetclinicConversionServiceFactory" />-->
+    <!--<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="10485760000" />
+    </bean>
+
+    <!-- 3.配置视图解析器ViewResolver。要求将jstl的包加到classpath -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--<property name="prefix" value="/WEB-INF/jsp/" />-->
+        <property name="prefix" value="/WEB-INF/views/" />     <!-- <property name="prefix" value="/WEB-INF/jsp" /> -->
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+    <!--&lt;!&ndash; @ResponseBody方法异常处理，处理json数据转换&ndash;&gt;-->
+    <!--<bean id="mappingJackson2HttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">-->
+        <!--<property name="objectMapper">-->
+            <!--<bean class="com.github.miemiedev.mybatis.paginator.jackson2.PageListJsonMapper" />-->
+        <!--</property>-->
+    <!--</bean>-->
+    <!--<bean class="com.github.miemiedev.smt.support.ResponseBodyHandlerExceptionResolver">-->
+        <!--<property name="messageConverter" ref="mappingJackson2HttpMessageConverter"/>-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash; 多个拦截器,顺序执行。先声明的拦截器中的preHandle方法会先执行，然而它的postHandle方法和afterCompletion方法却会后执行 &ndash;&gt;-->
+    <!--<mvc:interceptors>-->
+        <!--&lt;!&ndash; 使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor，将拦截所有的请求 &ndash;&gt;-->
+        <!--<bean class="interceptor.LoginInterceptor"/>-->
+        <!--<mvc:interceptor>-->
+            <!--<mvc:mapping path="/**" />-->
+            <!--<mvc:mapping path="/*.do" />        &lt;!&ndash; 一级目录 &ndash;&gt;-->
+            <!--<mvc:mapping path="/*/*.do" />      &lt;!&ndash; 二级目录 &ndash;&gt;-->
+            <!--&lt;!&ndash; 定义在mvc:interceptor下面的表示是对特定的请求才进行拦截的 &ndash;&gt;-->
+            <!--<bean class="interceptor.LoginInterceptor"/>-->
+            <!--<mvc:exclude-mapping path="/login.html"/>        &lt;!&ndash; 需排除拦截的地址 &ndash;&gt;-->
+        <!--</mvc:interceptor>-->
+    <!--</mvc:interceptors>-->
+
+</beans>

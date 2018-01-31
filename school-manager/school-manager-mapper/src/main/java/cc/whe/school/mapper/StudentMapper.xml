@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cc.whe.school.mapper.StudentMapper">
+    <resultMap id="BaseResultMap" type="cc.whe.school.pojo.Student">
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="xsbh" property="xsbh" jdbcType="VARCHAR" />
+        <result column="xsxm" property="xsxm" jdbcType="VARCHAR" />
+        <result column="sfzx" property="sfzx" jdbcType="INTEGER" />
+        <result column="zgxlm" property="zgxlm" jdbcType="VARCHAR" />
+        <result column="zgxlmc" property="zgxlmc" jdbcType="VARCHAR" />
+        <result column="gkzf" property="gkzf" jdbcType="DOUBLE" />
+        <result column="yx" property="yx" jdbcType="VARCHAR" />
+        <result column="zy" property="zy" jdbcType="VARCHAR" />
+        <result column="nj" property="nj" jdbcType="VARCHAR" />
+        <result column="bj" property="bj" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List">
+       id,Xsbh ,
+  Xsxm ,
+  Sfzx,
+  Zgxlm ,
+  Zgxlmc,
+  Gkzf,
+  yx,
+  Zy ,
+  Nj,
+Bj
+    </sql>
+
+    <select id="get" resultType="cc.whe.school.pojo.Student"
+            parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List" />
+        from t_sp_xs_xs
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <select id="findByCondition" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_sp_xs_xs
+        <where>
+            <if test="xsbh != null and xsbh !=''">
+                xsbh like CONCAT('%', #{xsbh,jdbcType=VARCHAR}, '%')
+            </if>
+            <if test="xsxm != null">
+                and    xsxm  like CONCAT('%', #{xsxm,jdbcType=VARCHAR}, '%')
+            </if>
+            <if test="sfzx != null">
+                and   sfzx = #{sfzx,jdbcType=INTEGER}
+            </if>
+            <if test="zgxlm != null">
+                and    zgxlm = #{zgxlm,jdbcType=VARCHAR}
+            </if>
+            <if test="zgxlmc != null">
+                and   zgxlmc = #{zgxlmc,jdbcType=VARCHAR}
+            </if>
+            <if test="gkzf != null">
+                and   gkzf = #{gkzf,jdbcType=DOUBLE}
+            </if>
+            <if test="yx != null">
+                and  yx = #{yx,jdbcType=VARCHAR}
+            </if>
+            <if test="zy != null">
+                and  zy = #{zy,jdbcType=VARCHAR}
+            </if>
+            <if test="nj != null">
+                and  nj = #{nj,jdbcType=VARCHAR}
+            </if>
+            <if test="bj != null">
+                and  bj = #{bj,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from
+        t_sp_xs_xs
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+
+    <insert id="insert" parameterType="cc.whe.school.pojo.Student"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into t_sp_xs_xs
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="xsbh != null">
+                xsbh,
+            </if>
+            <if test="xsxm != null">
+                xsxm,
+            </if>
+            <if test="sfzx != null">
+                sfzx,
+            </if>
+            <if test="zgxlm != null">
+                zgxlm,
+            </if>
+            <if test="zgxlmc != null">
+                zgxlmc,
+            </if>
+            <if test="gkzf != null">
+                gkzf,
+            </if>
+            <if test="yx != null">
+                yx,
+            </if>
+            <if test="zy != null">
+                zy,
+            </if>
+            <if test="nj != null">
+                nj,
+            </if>
+            <if test="bj != null">
+                bj,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="xsbh != null">
+                #{xsbh,jdbcType=VARCHAR},
+            </if>
+            <if test="xsxm != null">
+                #{xsxm,jdbcType=VARCHAR},
+            </if>
+            <if test="sfzx != null">
+                #{sfzx,jdbcType=VARCHAR},
+            </if>
+            <if test="zgxlm != null">
+                #{zgxlm,jdbcType=VARCHAR},
+            </if>
+            <if test="zgxlmc != null">
+                #{zgxlmc,jdbcType=TIMESTAMP},
+            </if>
+            <if test="gkzf != null">
+                #{gkzf,jdbcType=INTEGER},
+            </if>
+            <if test="yx != null">
+                #{yx,jdbcType=VARCHAR},
+            </if>
+            <if test="zy != null">
+                #{zy,jdbcType=VARCHAR},
+            </if>
+            <if test="nj != null">
+                #{nj,jdbcType=VARCHAR},
+            </if>
+            <if test="bj != null">
+                #{bj,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+
+    <update id="update" parameterType="cc.whe.school.pojo.Student">
+        update t_sp_xs_xs
+        <set>
+            <if test="xsbh != null">
+                xsbh = #{xsbh,jdbcType=VARCHAR},
+            </if>
+            <if test="xsxm != null">
+                xsxm = #{xsxm,jdbcType=VARCHAR},
+            </if>
+            <if test="sfzx != null">
+                sfzx = #{sfzx,jdbcType=INTEGER},
+            </if>
+            <if test="zgxlm != null">
+                zgxlm = #{zgxlm,jdbcType=VARCHAR},
+            </if>
+            <if test="zgxlmc != null">
+                zgxlmc = #{zgxlmc,jdbcType=VARCHAR},
+            </if>
+            <if test="gkzf != null">
+                gkzf = #{gkzf,jdbcType=DOUBLE},
+            </if>
+            <if test="yx != null">
+                yx = #{yx,jdbcType=VARCHAR},
+            </if>
+            <if test="zy != null">
+                zy = #{zy,jdbcType=VARCHAR},
+            </if>
+            <if test="nj != null">
+                nj = #{nj,jdbcType=VARCHAR},
+            </if>
+            <if test="bj != null">
+                bj = #{bj,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+</mapper>
