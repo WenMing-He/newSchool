@@ -1,0 +1,19 @@
+开发环境为：JDK1.8+IDEA+MySql+Maven
+
+框架：SSM 、 Bootstrap
+
+exam.sql为数据库文件
+Sp_xs_xs.xml为导入测试数据。
+
+使用时，记得把数据库连接更改，在resources的db.properties中更改
+
+安装顺序：
+1、school-parent
+2、school-common
+3、school-manager
+
+启动由school-manager-web的tomcat插件负责。
+
+测试网址：http://localhost:8090/find
+
+如有BUG请发邮件：whe_mi@163.com。维护人员第一时间上线解决

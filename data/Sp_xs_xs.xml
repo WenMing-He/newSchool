@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<student-info>
+    <student>
+        <xsbh>123213abc</xsbh>
+        <xsxm>小明</xsxm>
+        <sfzx>1</sfzx>
+        <zgxlm>fda12321</zgxlm>
+        <zgxlmc>你大爷</zgxlmc>
+        <gkzf>200.5</gkzf>
+        <yx>家里墩</yx>
+        <zy>玩</zy>
+        <nj>3</nj>
+        <bj>13</bj>
+    </student>
+    <student>
+        <xsbh>12321321abc</xsbh>
+        <xsxm>小红</xsxm>
+        <sfzx>0</sfzx>
+        <zgxlm>fdas12312</zgxlm>
+        <zgxlmc>哈哈</zgxlmc>
+        <gkzf>210.5</gkzf>
+        <yx>网吧墩</yx>
+        <zy>溜</zy>
+        <nj>1</nj>
+        <bj>213</bj>
+    </student>
+</student-info>
