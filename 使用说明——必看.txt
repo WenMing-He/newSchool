@@ -1,19 +1,19 @@
-¿ª·¢»·¾³Îª£ºJDK1.8+IDEA+MySql+Maven
+ï»¿å¼€å‘ç¯å¢ƒä¸ºï¼šJDK1.8+IDEA+MySql+Maven
 
-¿ò¼Ü£ºSSM ¡¢ Bootstrap
+æ¡†æ¶ï¼šSSM ã€ Bootstrap
 
-exam.sqlÎªÊı¾İ¿âÎÄ¼ş
-Sp_xs_xs.xmlÎªµ¼Èë²âÊÔÊı¾İ¡£
+exam.sqlä¸ºæ•°æ®åº“æ–‡ä»¶
+Sp_xs_xs.xmlä¸ºå¯¼å…¥æµ‹è¯•æ•°æ®ã€‚
 
-Ê¹ÓÃÊ±£¬¼ÇµÃ°ÑÊı¾İ¿âÁ¬½Ó¸ü¸Ä£¬ÔÚresourcesµÄdb.propertiesÖĞ¸ü¸Ä
+ä½¿ç”¨æ—¶ï¼Œè®°å¾—æŠŠæ•°æ®åº“è¿æ¥æ›´æ”¹ï¼Œåœ¨resourcesçš„db.propertiesä¸­æ›´æ”¹
 
-°²×°Ë³Ğò£º
-1¡¢school-parent
-2¡¢school-common
-3¡¢school-manager
+å®‰è£…é¡ºåºï¼š
+1ã€school-parent
+2ã€school-common
+3ã€school-manager
 
-Æô¶¯ÓÉschool-manager-webµÄtomcat²å¼ş¸ºÔğ¡£
+å¯åŠ¨ç”±school-manager-webçš„tomcatæ’ä»¶è´Ÿè´£ã€‚
 
-²âÊÔÍøÖ·£ºhttp://localhost:8090/find
+æµ‹è¯•ç½‘å€ï¼šhttp://localhost:8090/find
 
-ÈçÓĞBUGÇë·¢ÓÊ¼ş£ºwhe_mi@163.com¡£Î¬»¤ÈËÔ±µÚÒ»Ê±¼äÉÏÏß½â¾ö
+å¦‚æœ‰BUGè¯·å‘é‚®ä»¶ï¼šwhe_mi@163.comã€‚ç»´æŠ¤äººå‘˜ç¬¬ä¸€æ—¶é—´ä¸Šçº¿è§£å†³

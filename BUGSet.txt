@@ -1,0 +1,5 @@
+﻿1、乱码解决之道：
+   设置tomcat的<uriEncoding>UTF-8</uriEncoding>(maven插件)
+   或者设置tomcat的server.xml里的编码
+   使用post提交
+   sreach = new String(sreach.getBytes("iso8859-1"), "UTF-8");控制器转码
